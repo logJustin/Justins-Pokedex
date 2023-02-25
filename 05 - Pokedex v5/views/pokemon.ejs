@@ -1,0 +1,25 @@
+<%- include('partials/head') %>
+
+<body style="background-color:#f0f0f0">
+  <%- include('partials/navbar') %>
+
+  <div class="container">
+    <div class="pokemonFlex">
+      <h1><%= species %></h1>
+
+      <!-- logic for the image insert -->
+      <% if (id<10) { %>
+      <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/00<%= id %>.png" alt="">
+      <% } else if (id>9 && id <100) { %>
+      <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/0<%= id %>.png" alt="">
+      <% } else if (id>99) { %>
+      <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/<%= id %>.png" alt="">
+      <% } %>
+
+    </div>
+  </div>
+
+
+</body>
+
+</html>
