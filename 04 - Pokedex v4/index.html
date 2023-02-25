@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="app.css">
+    <title>Pokédex</title>
+    <link rel="icon"
+        href="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/768px-Pok%C3%A9_Ball_icon.svg.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+</head>
+
+<body style="background-color:#f0f0f0">
+    <nav class="navbar navbar-expand-md navbar-dark sticky-top" style=" background-color: #ee1515">
+        <a href="#" class="navbar-brand">Professor Oak's Pokédex</a>
+        <!-- displays pokeball icon adjusted to left on small displays -->
+        <ul class="navbar-nav mr-auto">
+            <li><img class="d-none d-sm-block d-md-none" height="40" id="eye"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/768px-Pok%C3%A9_Ball_icon.svg.png">
+            </li>
+        </ul>
+        <button class="navbar-toggler">
+            <span class="navbar-toggler-icon" data-toggle="collapse" data-target="#expandme"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="expandme">
+            <div class="navbar-nav">
+                <a href="#" class="nav-item nav-link">Pokédex</a>
+                <a href="#" class="nav-item nav-link">Pokémon</a>
+                <a href="#" class="nav-item nav-link">Items</a>
+                <a href="#" class="nav-item nav-link">Ash</a>
+                <a href="#" class="nav-item nav-link">Save</a>
+            </div>
+            <!-- display pokeball icon adjusted to right on medium display -->
+            <ul class="navbar-nav ml-auto">
+                <li><img class="me-auto d-none d-md-block" height="40" id="eye"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/768px-Pok%C3%A9_Ball_icon.svg.png">
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="outterContainer" id="outterContainer">
+        <div class="button-group filter-button-group" id="buttonGroup">
+            <button id="button" class="sortPokeID" onclick=sortingbyPokeNumber()>Sort Forward</button>
+            <button id="button" class="sortPokeID" onclick=sortingbyPokeNumberBackward()>Sort Backward</button>
+            <h3 id="filterTitles">Types</h3>
+            <button id="button" data-filter="*" class="showAll" onclick=filterType(event)>Show All</button>
+            <button id="button" class="background-color-grass" data-filter="grass"
+                onclick=filterType(event)>Grass</button>
+            <button id="button" class="background-color-fire" data-filter="fire" onclick=filterType(event)>Fire</button>
+            <button id="button" class="background-color-water" data-filter="water"
+                onclick=filterType(event)>Water</button>
+            <button id="button" class="background-color-poison" data-filter="poison"
+                onclick=filterType(event)>Poison</button>
+            <button id="button" class="background-color-bug" data-filter="bug" onclick=filterType(event)>Bug</button>
+            <button id="button" class="background-color-flying" data-filter="flying"
+                onclick=filterType(event)>Flying</button>
+            <button id="button" class="background-color-normal" data-filter="normal"
+                onclick=filterType(event)>Normal</button>
+            <button id="button" class="background-color-rock" data-filter="rock" onclick=filterType(event)>Rock</button>
+            <button id="button" class="background-color-ground" data-filter="ground"
+                onclick=filterType(event)>Ground</button>
+            <button id="button" class="background-color-psychic" data-filter="psychic"
+                onclick=filterType(event)>Psychic</button>
+            <button id="button" class="background-color-electric" data-filter="electric"
+                onclick=filterType(event)>Electric</button>
+            <button id="button" class="background-color-ice" data-filter="ice" onclick=filterType(event)>Ice</button>
+            <button id="button" class="background-color-ghost" data-filter="ghost"
+                onclick=filterType(event)>Ghost</button>
+            <button id="button" class="background-color-fighting" data-filter="fighting"
+                onclick=filterType(event)>Fighting</button>
+            <button id="button" class="background-color-fairy" data-filter="fairy"
+                onclick=filterType(event)>Fairy</button>
+            <button id="button" class="background-color-dragon" data-filter="dragon"
+                onclick=filterType(event)>Dragon</button>
+            <button id="button" class="background-color-dark" data-filter="dark" onclick=filterType(event)>Dark</button>
+            <h3 id="filterTitles">Generations</h3>
+            <button id="button" class="showAll" data-filter="*" onclick=filterGeneration(event)>Show All</button>
+            <button id="button" class="background-color-dark" data-filter="genOne"
+                onclick=filterGeneration(event)>I</button>
+            <button id="button" class="background-color-dark" data-filter="genTwo"
+                onclick=filterGeneration(event)>II</button>
+            <button id="button" class="background-color-dark" data-filter="genThree"
+                onclick=filterGeneration(event)>III</button>
+            <button id="button" class="background-color-dark" data-filter="genFour"
+                onclick=filterGeneration(event)>IV</button>
+            <button id="button" class="background-color-dark" data-filter="genFive"
+                onclick=filterGeneration(event)>V</button>
+            <button id="button" class="background-color-dark" data-filter="genSix"
+                onclick=filterGeneration(event)>VI</button>
+            <button id="button" class="background-color-dark" data-filter="genSeven"
+                onclick=filterGeneration(event)>VII</button>
+            <button id="button" class="background-color-dark" data-filter="genEight"
+                onclick=filterGeneration(event)>VII</button>
+            <h3 id="filterTitles">Consoles</h3>
+            <button id="button" class="showAll" data-filter="*" onclick=filterGeneration(event)>Show All</button>
+            <input type="image" class="consoleIconImage"
+                src="https://raw.githubusercontent.com/Tatohead/Console-Iconset/main/Console/Nintendo/GB/gb.png"
+                data-filter="genOne" onclick=filterGeneration(event) />
+            <input type="image" class="consoleIconImage"
+                src="https://raw.githubusercontent.com/Tatohead/Console-Iconset/main/Console/Nintendo/GB/gbc9.png"
+                data-filter="genTwo" onclick=filterGeneration(event) />
+            <input type="image" class="consoleIconImage"
+                src="https://raw.githubusercontent.com/Tatohead/Console-Iconset/main/Console/Nintendo/GBA/Gameboy%20Sp4.png"
+                data-filter="genThree" onclick=filterGeneration(event) />
+            <input type="image" class="consoleIconImage"
+                src="https://raw.githubusercontent.com/Tatohead/Console-Iconset/main/Console/Nintendo/NDS/NDS2.png"
+                data-filter="consoleDS" onclick=filterGeneration(event) />
+            <input type="image" class="consoleIconImage"
+                src="https://raw.githubusercontent.com/Tatohead/Console-Iconset/main/Console/Nintendo/3DS/3DS.png"
+                data-filter="console3DS" onclick=filterGeneration(event) />
+            <input type="image" class="consoleIconImage"
+                src="https://raw.githubusercontent.com/Tatohead/Console-Iconset/main/Console/Nintendo/Switch/Switch.png"
+                data-filter="consoleSwitch" onclick=filterGeneration(event) />
+            <h3 id="filterTitles">Special</h3>
+            <button id="button" class="showAll" data-filter="*" onclick=filterGeneration(event)>Show All</button>
+            <button id="button" class="background-color-poison" data-filter="legendary"
+                onclick=filterLegendary(event)>Legendary</button>
+            <button id="button" class="background-color-poison" data-filter="mythical"
+                onclick=filterMythical(event)>Mythical</button>
+        </div>
+        <div class="pokemonList" id="pokemonList"> </div>
+    </div>
+    <script src="app.js"></script>
+    <script>loopPokemon(1, 905)</script>
+    <script>sortingbyPokeNumber()</script>
+</body>
+
+</html>
