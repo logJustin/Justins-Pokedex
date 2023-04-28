@@ -1,9 +1,9 @@
 // https://github.com/Tatohead/Console-Iconset/tree/main/Console
 
-function loopPokemon(z, y) {
+async function loopPokemon(z, y) {
     for (let x = z; x <= y; x++) {
 
-        fetch(`https://pokeapi.co/api/v2/pokemon/${x}/`)
+        await fetch(`https://pokeapi.co/api/v2/pokemon/${x}/`)
             .then(res => res.json())
             .then(pokeData => {
 
@@ -36,6 +36,7 @@ function loopPokemon(z, y) {
                     // split all others at the hyphen in the name, return first element
                     default: var pokeName = (pokeData.name).split('-', 1)[0]
                 }
+
                 // append pokeName into the PokeSpan
                 pokemonName.innerHTML = pokeName
                 pokeSpan.appendChild(pokemonName)
@@ -78,10 +79,11 @@ function loopPokemon(z, y) {
                 for (pokeTypes of pokeData.types) {
                     var typeElement = document.createElement('p');
                     typeElement.innerHTML = pokeTypes.type.name
-                    typeElement.setAttribute('class', String('pill background-color-').concat(pokeTypes.type.name))
+                    typeElement.classList.add('pill', `background-color-${pokeTypes.type.name}`);
                     pokemonType.appendChild(typeElement)
                 }
                 pokeSpan.appendChild(pokemonType)
+
 
                 // // create the pokemon's consoles' span
                 var pokemonConsoles = document.createElement('span')
@@ -89,6 +91,7 @@ function loopPokemon(z, y) {
 
                 var consoleImage = document.createElement('img')
                 consoleImage.setAttribute('class', 'pokemonConsoleImage')
+
 
                 switch (true) {
                     case (pokeData.id <= 151): // apply gameboy OG icon to gen 1 pokemon
@@ -145,24 +148,22 @@ function loopPokemon(z, y) {
 
 }
 
-function filterType(e) {
+const filterType = (filter) => {
     const pokemons = document.querySelectorAll(".pokemonFlex");
-    let filter = e.target.dataset.filter;
+    pokemons.forEach((pokemon) => {
+        const [firstType, secondType] = pokemon.children[3].children;
+        if (
+            (filter === "*" ||
+                firstType.innerHTML === filter ||
+                (secondType && secondType.innerHTML === filter))
+        ) {
+            pokemon.classList.remove("hidden");
+        } else {
+            pokemon.classList.add("hidden");
+        }
+    });
+};
 
-    if (filter === '*') {
-        pokemons.forEach(pokemon => pokemon.classList.remove('hidden'));
-    } else {
-        pokemons.forEach(pokemon => {
-            // if second type exists & it is the same as the filter, remove hidden class
-            if ((pokemon.children[3].children[1]) && (pokemon.children[3].children[1].innerHTML == filter)) {
-                pokemon.classList.remove('hidden')
-            } else if (pokemon.children[3].children[0].innerHTML == filter) {
-                pokemon.classList.remove('hidden')
-                // else add hidden class
-            } else { pokemon.classList.add('hidden') }
-        });
-    };
-}
 function filterGeneration(e) {
     const pokemons = document.querySelectorAll(".pokemonFlex");
     let filter = e.target.dataset.filter;
@@ -181,47 +182,24 @@ function filterGeneration(e) {
 }
 
 const legendary = [144, 145, 146, 150, 243, 244, 245, 250, 249, 377, 378, 379, 381, 380, 382, 383, 384, 480, 481, 482, 483, 484, 485, 486, 487, 488, 638, 639, 640, 641, 642, 643, 644, 645, 646, 716, 717, 718, 772, 773, 785, 786, 787, 788, 790, 791, 792, 800, 793, 888, 889, 890, 891, 892, 896, 898, 894, 895, 905]
-function filterLegendary(e) {
-    const pokemons = document.querySelectorAll(".pokemonFlex");
-    let filter = e.target.dataset.filter;
-
-    if (filter === '*') {
-        pokemons.forEach(pokemon => pokemon.classList.remove('hidden'));
-    } else {
-        pokemons.forEach(pokemon => {
-            let stringPokeID = Number(pokemon.children[1].innerHTML)
-            // if second type exists & it is the same as the filter, remove hidden class
-            if (legendary.includes(stringPokeID)) {
-                pokemon.classList.remove('hidden')
-                // else add hidden class
-            } else { pokemon.classList.add('hidden') }
-        });
-    };
-}
-
 const mythical = [151, 251, 385, 386, 490, 489, 491, 492, 493, 494, 647, 648, 649, 719, 720, 721, 801, 802, 807, 808, 809, 893]
-function filterMythical(e) {
-    const pokemons = document.querySelectorAll(".pokemonFlex");
-    let filter = e.target.dataset.filter;
 
-    if (filter === '*') {
-        pokemons.forEach(pokemon => pokemon.classList.remove('hidden'));
-    } else {
-        pokemons.forEach(pokemon => {
-            let stringPokeID = Number(pokemon.children[1].innerHTML)
-            // if second type exists & it is the same as the filter, remove hidden class
-            if (mythical.includes(stringPokeID)) {
-                pokemon.classList.remove('hidden')
-                // else add hidden class
-            } else { pokemon.classList.add('hidden') }
-        });
-    };
-}
+const filterPokemon = (e, array) => {
+    const pokemons = document.querySelectorAll(".pokemonFlex");
+    const filter = e.target.dataset.filter;
+
+    pokemons.forEach((pokemon) => {
+        const pokeID = Number(pokemon.children[1].innerHTML);
+        const shouldHide = filter !== "*" && !array.includes(pokeID);
+        console.log(shouldHide)
+        pokemon.classList.toggle("hidden", shouldHide);
+    });
+};
+
 
 var sortByPokemonNumber = document.getElementsByClassName('sortPokeID');
 function sortingbyPokeNumber() {
     var items = document.querySelectorAll(".pokemonFlex");
-    console.log('Ran the sort script')
     // get all items as an array and call the sort method
     Array.from(items).sort(function (a, b) {
         // get the text content
@@ -233,7 +211,7 @@ function sortingbyPokeNumber() {
     })
     // )
 }
-// sortByPokemonNumber.addEventListener('click', sortingbyPokeNumber);
+
 
 var sortByPokemonNumber2 = document.getElementsByClassName('sortPokeID');
 function sortingbyPokeNumberBackward() {
@@ -242,19 +220,11 @@ function sortingbyPokeNumberBackward() {
     Array.from(items).sort(function (a, b) {
         // get the text content
         a = a.querySelector('.pokemonNumber').innerHTML
-        // console.log(a)
         b = b.querySelector('.pokemonNumber').innerHTML
-        // console.log(b)
         return (a < b) - (a > b)
     }).forEach(function (n, i) {
         n.style.order = i
     })
     // )
 }
-// sortByPokemonNumber2.addEventListener('click', sortingbyPokeNumberBackward);
 
-setTimeout(function () {
-    sortingbyPokeNumberBackward();
-    sortingbyPokeNumber();
-    console.log('waited a bit')
-}, 4000);

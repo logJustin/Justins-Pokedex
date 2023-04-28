@@ -8,6 +8,10 @@ app.use(express.static(path.join(__dirname, '/public')))
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'))
 
+app.get('/', (req, res) => {
+    res.render('./views/partials/pokemon', { ...pokemon })
+})
+
 app.get('/pokemon/:num', (req, res) => {
     const { num } = req.params
     const pokemon = pokeData[num - 1]
