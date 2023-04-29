@@ -164,9 +164,8 @@ const filterType = (filter) => {
     });
 };
 
-function filterGeneration(e) {
+function filterGeneration(filter) {
     const pokemons = document.querySelectorAll(".pokemonFlex");
-    let filter = e.target.dataset.filter;
 
     if (filter === '*') {
         pokemons.forEach(pokemon => pokemon.classList.remove('hidden'));

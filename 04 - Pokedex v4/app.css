@@ -5,7 +5,8 @@ body {
 }
 
 .nav-bar {
-    background-color: #61aad4 !important;
+    background-color: #F45050 !important;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 .dropdown-menu-dark {

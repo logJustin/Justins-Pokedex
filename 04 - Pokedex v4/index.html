@@ -26,23 +26,33 @@
             <span class="fs-5">P<span class="d-none d-sm-inline">oké</span></span>
           </a> -->
           <ul class="nav nav-pills flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 justify-content-center align-items-center align-items-sm-start" id="menu">
+
             <li class="nav-item">
               <a href="#" class="nav-link px-sm-0 px-2">
-                <i class="fs-5 bi-house"></i><span class="ms-1 d-none d-sm-inline">Home</span>
+                <i class="fs-5 bi-house text-dark" onclick="filterType('*')"></i><span class="ms-1 d-none d-sm-inline text-dark" onclick="filterType('*')">Pokémon</span>
               </a>
-            </li>
-            <li>
-              <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-sm-0 px-2">
-                <i class="fs-5 bi-speedometer2"></i><span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
-            </li>
-            <li>
-              <a href="#" class="nav-link px-sm-0 px-2">
-                <i class="fs-5 bi-table"></i><span class="ms-1 d-none d-sm-inline">Orders</span></a>
             </li>
 
             <li class="dropdown">
-              <a href="#" class="nav-link dropdown-toggle px-sm-0 px-1" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fs-5 bi-fire"></i> <span class="ms-1 d-none d-sm-inline">Type</span>
+              <a href="#" class="nav-link dropdown-toggle px-sm-0 px-1 text-dark" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fs-5 bi-123 text-dark"></i> <span class="ms-1 d-none d-sm-inline text-dark">Generation</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark text-small shadow" style="max-height: 200px; overflow-y: auto;" aria-labelledby="dropdown">
+                <li><span class="dropdown-item text-dark" onclick="filterGeneration('*')">All</span></li>
+                <li><span class="dropdown-item text-dark" onclick="filterGeneration('genOne')">1</span></li>
+                <li><span class="dropdown-item text-dark" onclick="filterGeneration('genTwo')">2</span></li>
+                <li><span class="dropdown-item text-dark" onclick="filterGeneration('genThree')">3</span></li>
+                <li><span class="dropdown-item text-dark" onclick="filterGeneration('genFour')">4</span></li>
+                <li><span class="dropdown-item text-dark" onclick="filterGeneration('genFive')">5</span></li>
+                <li><span class="dropdown-item text-dark" onclick="filterGeneration('genSix')">6</span></li>
+                <li><span class="dropdown-item text-dark" onclick="filterGeneration('genSeven')">7</span></li>
+                <li><span class="dropdown-item text-dark" onclick="filterGeneration('genEight')">8</span></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="nav-link dropdown-toggle px-sm-0 px-1 text-dark" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fs-5 bi-fire text-dark"></i> <span class="ms-1 d-none d-sm-inline text-dark">Type</span>
               </a>
               <ul class="dropdown-menu dropdown-menu-dark text-small shadow" style="max-height: 200px; overflow-y: auto;" aria-labelledby="dropdown">
                 <li><span class="dropdown-item text-dark" onclick="filterType('*')">All</span></li>
@@ -67,14 +77,22 @@
               </ul>
             </li>
 
-            <li>
-              <a href="#" class="nav-link px-sm-0 px-2">
-                <i class="fs-5 bi-grid"></i><span class="ms-1 d-none d-sm-inline">Products</span></a>
+            <li class="dropdown">
+              <a href="#" class="nav-link dropdown-toggle px-sm-0 px-1 text-dark" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fs-5 bi-controller text-dark"></i> <span class="ms-1 d-none d-sm-inline text-dark">Console</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark text-small shadow" style="max-height: 200px; overflow-y: scroll;">
+                <li style="display: inline-block;"><img class="mb-3" src="https://raw.githubusercontent.com/Tatohead/Console-Iconset/main/Console/Nintendo/GB/gb.png" onclick="filterGeneration('genOne')"></li>
+                <li style="display: inline-block;"><img class="mb-3" src="https://raw.githubusercontent.com/Tatohead/Console-Iconset/main/Console/Nintendo/GB/gbc9.png" onclick="filterGeneration('genTwo')"></li>
+                <li style="display: inline-block;"><img class="mb-3" src="https://raw.githubusercontent.com/Tatohead/Console-Iconset/main/Console/Nintendo/GBA/Gameboy%20Sp4.png" onclick="filterGeneration('genThree')"></li>
+                <li style="display: inline-block;"><img class="mb-3" src="https://raw.githubusercontent.com/Tatohead/Console-Iconset/main/Console/Nintendo/NDS/NDS2.png" onclick="filterGeneration('consoleDS')"></li>
+                <li style="display: inline-block;"><img class="mb-3" src="https://raw.githubusercontent.com/Tatohead/Console-Iconset/main/Console/Nintendo/3DS/3DS.png" onclick="filterGeneration('console3DS')"></li>
+                <li style="display: inline-block;"><img class="mb-3" src="https://raw.githubusercontent.com/Tatohead/Console-Iconset/main/Console/Nintendo/Switch/Switch.png" onclick="filterGeneration('consoleSwitch')"></li>
+              </ul>
+
             </li>
-            <li>
-              <a href="#" class="nav-link px-sm-0 px-2">
-                <i class="fs-5 bi-people"></i><span class="ms-1 d-none d-sm-inline">Customers</span> </a>
-            </li>
+
+
           </ul>
           <div class="dropdown py-sm-4 mt-sm-auto ms-auto ms-sm-0 flex-shrink-1">
             <a href="#" class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
