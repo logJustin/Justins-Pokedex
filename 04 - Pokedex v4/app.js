@@ -9,9 +9,11 @@ async function loopPokemon(z, y) {
 
                 // create Span for Pokemon, set class, & append to PokemonList
                 var pokeSpan = document.createElement('span')
-                pokeSpan.setAttribute('class', 'pokemonFlex', 'id', 'pokemonFlex')
+                pokeSpan.setAttribute('class', 'pokemonFlex')
+                pokeSpan.setAttribute('id', 'pokemonFlex')
+                pokeSpan.setAttribute('data-bs-toggle', 'modal')
+                pokeSpan.setAttribute('data-bs-target', '#exampleModal')
                 document.getElementById('pokemonList').appendChild(pokeSpan)
-
                 // create P for Pokemon Name, set class, append it to PokeSpan
                 var pokemonName = document.createElement('p')
                 pokemonName.setAttribute('class', 'pokemonName')

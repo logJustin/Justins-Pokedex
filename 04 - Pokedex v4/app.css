@@ -13,12 +13,10 @@ body {
     background-color: #8cc5ce !important;
 }
 
-
 .customIcon {
     content: url('./imgs/pokeball.png');
     height: 20px;
     width: 20px;
-    /* Other styles here */
 }
 
 .pokeball {
@@ -212,11 +210,48 @@ span.pokemonFlex {
     max-width: 2rem;
 }
 
+div.modal-content {
+    background: #f3d943;
+}
+
+/* #overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background: #999;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    z-index: 100;
+}
+
+#popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: #f3d943;
+    width: 500px;
+    height: 500px;
+    margin-left: -250px;
+    margin-top: -250px;
+    z-index: 200;
+    border-radius: 15px;
+} */
 
 @media screen and (min-width:426px) {
     .scrollable {
         overflow-y: auto;
         height: 100vh;
+    }
+}
+
+@media screen and (orientation:landscape) and (max-width:659px) {
+    .pokemonImage {
+        max-width: 7rem;
+    }
+
+    .pokeContainer {
+        width: 100% !important;
     }
 }
 
@@ -228,28 +263,16 @@ span.pokemonFlex {
         margin-right: 2px;
     }
 
-    #filterTitles {
-        font-size: 1.25rem;
-        margin-top: 1rem;
-    }
-
-    #button {
-        font-size: 0.9rem;
-        min-width: 6.8rem;
-    }
-
-    .filter-button-group {
-        margin-left: 1rem;
-    }
-
     .pokemonFlex {
         margin-left: 0rem;
         margin-right: 0rem;
-        max-width: 10rem;
+        margin-bottom: 1rem;
+        width: 10rem;
     }
 
     .pokemonImage {
         max-width: 7rem;
+        /* max-width: 3rem; */
     }
 
     .pokemonName {
