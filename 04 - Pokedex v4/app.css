@@ -214,6 +214,10 @@ div.modal-content {
     background: #f3d943;
 }
 
+.hidden {
+    display: none;
+}
+
 /* #overlay {
     position: absolute;
     top: 0;

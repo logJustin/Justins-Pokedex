@@ -1,13 +1,26 @@
-const myModal = document.getElementById('exampleModal')
-let name = document.getElementsByClassName('modal pokemonName')
-name = name[0].innerHTML
-console.log(name)
+// const myModal = document.getElementById('exampleModal')
+
+
+// myModal.addEventListener('shown.bs.modal', (event) => {
+//     let pokemon = event.relatedTarget
+//     let pokeName = pokemon.firstChild.innerHTML
+
+//     let name = document.getElementsByClassName('modalName')
+//     name[0].innerHTML = pokeName
+
+// })
+
+
+const myModal = document.querySelector('#exampleModal');
+
 
 
 myModal.addEventListener('shown.bs.modal', (event) => {
-    let pokemon = event.relatedTarget
-    let pokeName = pokemon.firstChild.innerHTML
-    name = pokeName
-    console.log(pokemon.firstChild.innerHTML)
+    const name = document.querySelector('.modalName');
+    console.log(name)
+    const pokemon = event.relatedTarget;
+    const pokeName = pokemon.firstChild.innerHTML;
 
-})
+    name.innerHTML = pokeName;
+    name.classList.remove('hidden'); // remove "hidden" class when modal is shown
+}); 
