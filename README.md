@@ -45,12 +45,16 @@ This project is open to contributions. If you find any bugs or want to add new f
 - The project utilizes the PokéAPI to retrieve Pokémon data: [PokéAPI](https://pokeapi.co/).
 - The console icons used in the app are from the Console-Iconset repository by Tatohead: [Console-Iconset](https://github.com/Tatohead/Console-Iconset).
 
+## License 📜
+
+The Pokédex web app is open source and released under the [MIT License](https://opensource.org/licenses/MIT). Feel free to use, modify, and distribute the code as per the terms of the license.
+
 ## Contact 📞
 
 If you have any questions or suggestions regarding the Pokédex web app, you can reach out to Justin through the following channels:
 
+- Email: reynolds.justinmichael@gmail.com
 - GitHub: [logJustin](https://github.com/logJustin)
 - LinkedIn: [logJustin](https://linkedin.com/in/logJustin)
-- Email: [Gmail](mailto:Reynolds.justinmichael@gmail.com)
 
 Thank you for your interest in the Pokédex web app! Enjoy exploring the world of Pokémon! 🌍🔥
