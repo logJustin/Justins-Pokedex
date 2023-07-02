@@ -51,6 +51,6 @@ If you have any questions or suggestions regarding the Pokédex web app, you can
 
 - GitHub: [logJustin](https://github.com/logJustin)
 - LinkedIn: [logJustin](https://linkedin.com/in/logJustin)
-- Email: [Gmail](Reynolds.justinmichael@gmail.com)
+- Email: [Gmail](mailto:Reynolds.justinmichael@gmail.com)
 
 Thank you for your interest in the Pokédex web app! Enjoy exploring the world of Pokémon! 🌍🔥
